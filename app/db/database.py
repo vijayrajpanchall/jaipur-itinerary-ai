@@ -11,8 +11,7 @@ DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./jaipur_itinerary.db")
 
 # Create database engine
 engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
+    DATABASE_URL, connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
 )
 
 # Create session factory
@@ -39,5 +38,6 @@ def init_db():
     Initialize database tables.
     Call this function to create all tables.
     """
-    from app.db.models import User, Itinerary, Place
+    from app.db.models import User, Itinerary, Place  # noqa: F401
+
     Base.metadata.create_all(bind=engine)

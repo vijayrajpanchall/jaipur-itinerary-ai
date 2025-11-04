@@ -9,23 +9,25 @@ from app.db.database import Base
 
 class User(Base):
     """User model for storing user information."""
+
     __tablename__ = "users"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String(255), unique=True, index=True, nullable=False)
     username = Column(String(100), unique=True, index=True, nullable=False)
     hashed_password = Column(String(255), nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
-    
+
     # Relationships
     itineraries = relationship("Itinerary", back_populates="user")
 
 
 class Itinerary(Base):
     """Itinerary model for storing generated itineraries."""
+
     __tablename__ = "itineraries"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     title = Column(String(255), nullable=False)
@@ -35,15 +37,16 @@ class Itinerary(Base):
     itinerary_data = Column(JSON, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
-    
+
     # Relationships
     user = relationship("User", back_populates="itineraries")
 
 
 class Place(Base):
     """Place model for storing information about places in Jaipur."""
+
     __tablename__ = "places"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(255), nullable=False, index=True)
     description = Column(Text)
@@ -62,8 +65,9 @@ class Place(Base):
 
 class Feedback(Base):
     """Feedback model for storing user feedback on itineraries."""
+
     __tablename__ = "feedback"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     itinerary_id = Column(Integer, ForeignKey("itineraries.id"), nullable=False)

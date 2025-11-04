@@ -24,9 +24,7 @@ async def generate_itinerary(request: ItineraryRequest):
     """
     try:
         itinerary = await itinerary_service.generate_itinerary(
-            days=request.days,
-            interests=request.interests,
-            budget=request.budget
+            days=request.days, interests=request.interests, budget=request.budget
         )
         return {"itinerary": itinerary}
     except Exception as e:

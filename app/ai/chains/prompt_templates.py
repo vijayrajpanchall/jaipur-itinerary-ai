@@ -3,7 +3,8 @@ Prompt templates for itinerary generation.
 """
 
 ITINERARY_PROMPT_TEMPLATE = """
-You are an expert travel guide for Jaipur, Rajasthan, India. Create a personalized {days}-day itinerary based on the following preferences:
+You are an expert travel guide for Jaipur, Rajasthan, India. Create a personalized \
+{days}-day itinerary based on the following preferences:
 
 User Interests: {interests}
 Budget Level: {budget}
