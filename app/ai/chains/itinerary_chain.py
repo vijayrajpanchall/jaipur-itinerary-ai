@@ -3,7 +3,7 @@ Itinerary chain for generating personalized itineraries using LangChain.
 """
 from typing import Optional, Dict, Any
 import pandas as pd
-from app.ai.chains.prompt_templates import ITINERARY_PROMPT_TEMPLATE  # noqa: F401
+# from app.ai.chains.prompt_templates import ITINERARY_PROMPT_TEMPLATE
 from app.ai.chains.output_parser import ItineraryOutputParser
 
 
@@ -33,17 +33,12 @@ class ItineraryChain:
         Returns:
             Dictionary containing the generated itinerary
         """
-        # Prepare context
-        # context = self._prepare_context(
-        #     days=days, interests=interests, budget=budget, weather=weather,
-        #     places_data=places_data
-        # )
-        # Generate prompt
+        # TODO: In production, prepare context and use LLM to generate itinerary
+        # context = self._prepare_context(days, interests, budget, weather, places_data)
         # prompt = ITINERARY_PROMPT_TEMPLATE.format(**context)
-        # TODO: Use the prompt to call the LLM in production
+        # itinerary = self.llm.generate(prompt)
 
         # For now, return a placeholder itinerary
-        # In production, this would call the LLM
         itinerary = self._generate_placeholder_itinerary(days, interests, budget)
 
         return itinerary

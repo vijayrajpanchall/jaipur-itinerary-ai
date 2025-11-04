@@ -1,7 +1,7 @@
 """
 Weather service for getting weather forecasts for Jaipur.
 """
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 from datetime import datetime, timedelta
 
 
@@ -26,7 +26,7 @@ class WeatherService:
             "wind_speed": 10,
         }
 
-    async def get_weather_forecast(self, days: int) -> list[Dict[str, Any]]:
+    async def get_weather_forecast(self, days: int) -> List[Dict[str, Any]]:
         """
         Get weather forecast for specified number of days.
 

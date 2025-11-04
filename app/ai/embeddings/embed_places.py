@@ -3,7 +3,7 @@ Embedding generation for places to enable semantic search.
 """
 import pandas as pd
 import numpy as np
-from typing import List, Optional
+from typing import List, Optional, Tuple
 import os
 
 
@@ -75,7 +75,7 @@ class PlaceEmbeddings:
         # Save metadata
         places_df.to_csv(self.metadata_file, index=False)
 
-    def load_embeddings(self) -> tuple[Optional[np.ndarray], Optional[pd.DataFrame]]:
+    def load_embeddings(self) -> Tuple[Optional[np.ndarray], Optional[pd.DataFrame]]:
         """Load embeddings and metadata from disk."""
         if not os.path.exists(self.embeddings_file) or not os.path.exists(self.metadata_file):
             return None, None
